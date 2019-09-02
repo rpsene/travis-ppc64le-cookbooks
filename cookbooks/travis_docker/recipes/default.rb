@@ -43,19 +43,19 @@ cookbook_file '/etc/default/docker' do
   mode 0o640
 end
 
-directory '/etc/default/grub.d' do
-  owner 'root'
-  group 'root'
-  mode 0o755
-end
+#directory '/etc/default/grub.d' do
+#  owner 'root'
+#  group 'root'
+#  mode 0o755
+#end
 
-cookbook_file '/etc/default/grub.d/99-travis-settings.cfg' do
-  source 'etc/default/grub.d/99-travis-settings.cfg'
-  owner 'root'
-  group 'root'
-  mode 0o640
-  not_if { node['kernel']['machine'] == 'ppc64le' }
-end
+#cookbook_file '/etc/default/grub.d/99-travis-settings.cfg' do
+#  source 'etc/default/grub.d/99-travis-settings.cfg'
+#  owner 'root'
+#  group 'root'
+#  mode 0o640
+#  not_if { node['kernel']['machine'] == 'ppc64le' }
+#end
 
 cookbook_file '/etc/default/grub.d/99-travis-settings-ppc64le.cfg' do
   source 'etc/default/grub.d/99-travis-settings-ppc64le.cfg'
@@ -65,6 +65,6 @@ cookbook_file '/etc/default/grub.d/99-travis-settings-ppc64le.cfg' do
   only_if { node['kernel']['machine'] == 'ppc64le' }
 end
 
-execute 'update-grub' do
-  only_if { node['travis_docker']['update_grub'] }
-end
+#execute 'update-grub' do
+#  only_if { node['travis_docker']['update_grub'] }
+#end
